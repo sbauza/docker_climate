@@ -1,0 +1,11 @@
+sessionname climate
+hardstatus alwayslastline '%{= .} %-Lw%{= .}%> %n%f %t*%{= .}%+Lw%< %-=%{g}(%{d}%H/%l%{g})'
+setenv PROMPT_COMMAND /bin/true
+screen -t shell bash
+screen -t c-api bash
+stuff "climate-api --log_exchange -d "
+screen -t c-mgr bash
+stuff "climate-manager -d"
+select 0
+bindkey ^[[1;3D prev
+bindkey ^[[1;3C next
